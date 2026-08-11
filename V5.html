@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V5 · Header Explorations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#02324F;--navy2:#0A3F62;--blue:#0798F0;--blue-ink:#0A6CB0;--azure:#74C4F3;
+        --ink:#0B1524;--muted:#586178;--muted2:#8A93A6;--line:#E4EAF4;--bg-alt:#F4F7FC;
+        --blue-soft:#CFE9FC;--blue-tint:#EAF6FE}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Helvetica Neue',Helvetica,'Arimo',Arial,sans-serif;color:var(--ink);background:#fff}
+  h1,.eyebrow,.btn,.tag{font-family:'Arimo',Arial,sans-serif}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+  .lit{color:var(--blue)}
+  .btn{display:inline-flex;align-items:center;gap:9px;white-space:nowrap;font-weight:600;font-size:15px;padding:13px 22px;border-radius:9px;text-decoration:none;border:1px solid transparent;transition:transform .15s,box-shadow .2s,background .2s,border-color .2s;cursor:pointer}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--blue);color:#fff}.btn-primary:hover{box-shadow:0 10px 24px -8px rgba(7,152,240,.6)}
+  .btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}.btn-ghost:hover{border-color:var(--blue);color:var(--blue-ink);background:var(--blue-tint)}
+  .btn-ghostd{background:transparent;border-color:rgba(255,255,255,.45);color:#fff}.btn-ghostd:hover{background:rgba(255,255,255,.10);border-color:#fff}
+  .btn-white{background:#fff;color:var(--blue-ink)}.btn-white:hover{box-shadow:0 10px 24px -8px rgba(0,0,0,.4)}
+
+  .topbar{position:sticky;top:0;z-index:20;background:#02182a;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:12px 32px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .topbar .brand{font-family:'Arimo';font-weight:700;font-size:15px}
+  .topbar a{color:#9FB6D0;font-family:'Arimo';font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,.2);padding:8px 14px;border-radius:6px;transition:.2s}
+  .topbar a:hover{color:#fff;border-color:var(--blue);background:rgba(7,152,240,.16)}
+  .optlabel{background:#0B1B2A;color:#9FB6D0;font-family:'Arimo';font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:15px 40px;display:flex;justify-content:space-between;align-items:center}
+  .optlabel b{color:#fff}
+  .optlabel .d{color:var(--azure);letter-spacing:.03em;text-transform:none;font-weight:400;font-size:13px}
+
+  /* ===== 1 · SPLIT (dark) ===== */
+  .o1{background:#02324F;background:linear-gradient(120deg,var(--navy),var(--navy2));padding:84px 0;position:relative;overflow:hidden}
+  .o1::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/90px 100%,linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px) 0 0/100% 90px;-webkit-mask-image:radial-gradient(circle at 30% 40%,#000,transparent 70%);mask-image:radial-gradient(circle at 30% 40%,#000,transparent 70%);pointer-events:none}
+  .o1 .g{position:relative;z-index:2;display:grid;grid-template-columns:1.04fr .96fr;gap:56px;align-items:center}
+  .o1 h1{color:#fff;font-size:clamp(34px,4.3vw,52px);line-height:1.07;margin:0;letter-spacing:-.01em}
+  .o1 .sub{color:#B8C1D9;font-size:16.5px;line-height:1.55;margin-top:22px;max-width:46ch}
+  .o1 .cta{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+  .o1 .tag{margin-top:26px;font-size:12px;letter-spacing:.05em;color:#8FA6C2}
+  .panel{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:22px;box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
+  .p-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:4px}
+  .p-lbl{font-family:'Arimo';font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#9FB6D0}
+  .p-pill{font-family:'Arimo';font-size:11px;color:var(--azure);border:1px solid rgba(255,255,255,.18);background:rgba(7,152,240,.12);border-radius:999px;padding:4px 10px}
+  .p-node{display:flex;gap:14px;padding:12px 4px;opacity:.4}.p-node.on{opacity:1}
+  .p-node .dot{width:12px;height:12px;border-radius:50%;border:2px solid rgba(255,255,255,.3);margin-top:3px;flex-shrink:0}
+  .p-node.on .dot{border-color:var(--blue);background:var(--blue)}
+  .p-node .k{font-family:'Arimo';font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#9FB6D0}
+  .p-node .v{font-size:15px;color:#fff;margin-top:2px}.p-node .v.az{color:var(--azure)}
+  @media(max-width:900px){.o1 .g{grid-template-columns:1fr;gap:36px}}
+
+  /* ===== 2 · CENTERED (gradient) ===== */
+  .o2{background:linear-gradient(135deg,#02324F 0%,#0A5AA0 62%,#0798F0 135%);padding:92px 0 68px;text-align:center}
+  .o2 h1{color:#fff;font-size:clamp(38px,5.4vw,64px);line-height:1.03;margin:0 auto;max-width:17ch;letter-spacing:-.02em}
+  .o2 .sub{color:#DCEEFB;font-size:17px;margin:24px auto 0;max-width:62ch;line-height:1.5}
+  .o2 .cta{display:flex;gap:14px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+  .o2 .tagbar{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:0 4px;margin-top:52px;padding-top:28px;border-top:1px solid rgba(255,255,255,.2)}
+  .o2 .tagbar span{font-family:'Arimo';font-size:12px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.85);padding:0 18px}
+  .o2 .tagbar i{width:1px;height:12px;background:rgba(255,255,255,.32)}
+
+  /* ===== 3 · LIGHT (white) ===== */
+  .o3{background:#fff;padding:92px 0;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .o3 h1{color:var(--ink);font-size:clamp(34px,4.8vw,56px);line-height:1.05;margin:0 auto;max-width:18ch;letter-spacing:-.01em}
+  .o3 .sub{color:var(--muted);font-size:18px;margin:22px auto 0;max-width:60ch;line-height:1.5}
+  .o3 .cta{display:flex;gap:14px;justify-content:center;margin-top:32px;flex-wrap:wrap}
+  .o3 .tag{margin-top:40px;font-family:'Arimo';font-size:12px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--blue-ink)}
+  .o3 .tag i{color:var(--blue-soft);margin:0 12px}
+
+  /* ===== 4 · EDITORIAL (dark, oversized) ===== */
+  .o4{background:linear-gradient(160deg,#041f31,#083655);padding:92px 0;position:relative;overflow:hidden}
+  .o4 .g{display:grid;grid-template-columns:1.4fr .8fr;gap:0;align-items:center}
+  .o4 .main{padding-right:48px}
+  .o4 h1{color:#fff;font-size:clamp(40px,5.6vw,72px);line-height:1.0;margin:0;letter-spacing:-.03em;font-weight:700}
+  .o4 .sub{color:#B8C1D9;font-size:16px;line-height:1.55;margin-top:24px;max-width:44ch}
+  .o4 .cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+  .o4 .side{border-left:1px solid rgba(255,255,255,.16);padding-left:40px}
+  .o4 .tI{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.10);font-family:'Arimo';font-size:15px;font-weight:600;letter-spacing:.02em;color:#D9E3F0}
+  .o4 .tI:last-child{border-bottom:0}
+  .o4 .tI span{display:block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--azure);font-weight:600;margin-bottom:5px}
+  @media(max-width:900px){.o4 .g{grid-template-columns:1fr;gap:32px}.o4 .main{padding-right:0}.o4 .side{border-left:0;border-top:1px solid rgba(255,255,255,.16);padding-left:0;padding-top:20px}}
+
+  /* ===== 5 · CENTERED on dark navy (opt2 layout + opt1 background) ===== */
+  .o5{background:#02324F;background:linear-gradient(120deg,var(--navy),var(--navy2));padding:92px 0 68px;text-align:center;position:relative;overflow:hidden}
+  .o5::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/90px 100%,linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px) 0 0/100% 90px;-webkit-mask-image:radial-gradient(circle at 50% 42%,#000,transparent 72%);mask-image:radial-gradient(circle at 50% 42%,#000,transparent 72%);pointer-events:none}
+  .o5 .wrap{position:relative;z-index:2}
+  .o5 h1{color:#fff;font-size:clamp(38px,5.4vw,64px);line-height:1.03;margin:0 auto;max-width:17ch;letter-spacing:-.02em}
+  .o5 .sub{color:#B8C1D9;font-size:17px;margin:24px auto 0;max-width:62ch;line-height:1.5}
+  .o5 .cta{display:flex;gap:14px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+  .o5 .tagbar{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:0 4px;margin-top:52px;padding-top:28px;border-top:1px solid rgba(255,255,255,.18)}
+  .o5 .tagbar span{font-family:'Arimo';font-size:12px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.84);padding:0 18px}
+  .o5 .tagbar i{width:1px;height:12px;background:rgba(255,255,255,.3)}
+</style>
+</head>
+<body>
+  <div class="topbar"><span class="brand">V5 · Header explorations</span><a href="index.html">&larr; All Versions</a></div>
+
+  <div class="optlabel"><span>Option 1 &nbsp;·&nbsp; <b>Split with product panel</b></span><span class="d">Same copy · dark, product-forward</span></div>
+  <section class="o1"><div class="wrap g">
+    <div>
+      <h1>Build on AI your customers can <span class="lit">trust</span></h1>
+      <p class="sub">SeekrFlow, the explainable AI operating system, is now available to startups building in critical industries via OneValley.</p>
+      <div class="cta"><a class="btn btn-primary">Start Building &rarr;</a><a class="btn btn-ghostd">Talk to the team</a></div>
+      <div class="tag">Agentic AI Infrastructure&nbsp;&nbsp;|&nbsp;&nbsp;Explainability First&nbsp;&nbsp;|&nbsp;&nbsp;Priced for Startups</div>
+    </div>
+    <div><div class="panel">
+      <div class="p-head"><span class="p-lbl">Decision Provenance</span><span class="p-pill">Traceable</span></div>
+      <div class="p-node on"><span class="dot"></span><div><div class="k">Data</div><div class="v">12 source records ingested</div></div></div>
+      <div class="p-node on"><span class="dot"></span><div><div class="k">Reasoning</div><div class="v">Model rationale logged, step by step</div></div></div>
+      <div class="p-node on"><span class="dot"></span><div><div class="k">Decision</div><div class="v az">Flag transaction #4471 for review</div></div></div>
+      <div class="p-node"><span class="dot"></span><div><div class="k">Audit</div><div class="v">Fully traceable and contestable</div></div></div>
+    </div></div>
+  </div></section>
+
+  <div class="optlabel"><span>Option 2 &nbsp;·&nbsp; <b>Centered on bold gradient</b></span><span class="d">Same copy · confident, high-impact</span></div>
+  <section class="o2"><div class="wrap">
+    <h1>Build on AI your customers can <span class="lit" style="color:#DCEEFB">trust</span></h1>
+    <p class="sub">SeekrFlow, the explainable AI operating system, is now available to startups building in critical industries via OneValley.</p>
+    <div class="cta"><a class="btn btn-white">Start Building &rarr;</a><a class="btn btn-ghostd">Talk to the team</a></div>
+    <div class="tagbar"><span>Agentic AI Infrastructure</span><i></i><span>Explainability First</span><i></i><span>Priced for Startups</span></div>
+  </div></section>
+
+  <div class="optlabel"><span>Option 3 &nbsp;·&nbsp; <b>Light &amp; minimal</b></span><span class="d">Same copy · airy, clean, on white</span></div>
+  <section class="o3"><div class="wrap">
+    <h1>Build on AI your customers can <span class="lit">trust</span></h1>
+    <p class="sub">SeekrFlow, the explainable AI operating system, is now available to startups building in critical industries via OneValley.</p>
+    <div class="cta"><a class="btn btn-primary">Start Building &rarr;</a><a class="btn btn-ghost">Talk to the team</a></div>
+    <div class="tag">Agentic AI Infrastructure<i>|</i>Explainability First<i>|</i>Priced for Startups</div>
+  </div></section>
+
+  <div class="optlabel"><span>Option 4 &nbsp;·&nbsp; <b>Editorial, oversized type</b></span><span class="d">Same copy · bold and distinctive</span></div>
+  <section class="o4"><div class="wrap g">
+    <div class="main">
+      <h1>Build on AI your customers can <span class="lit">trust</span></h1>
+      <p class="sub">SeekrFlow, the explainable AI operating system, is now available to startups building in critical industries via OneValley.</p>
+      <div class="cta"><a class="btn btn-primary">Start Building &rarr;</a><a class="btn btn-ghostd">Talk to the team</a></div>
+    </div>
+    <div class="side">
+      <div class="tI"><span>Infrastructure</span>Agentic AI Infrastructure</div>
+      <div class="tI"><span>Approach</span>Explainability First</div>
+      <div class="tI"><span>Pricing</span>Priced for Startups</div>
+    </div>
+  </div></section>
+
+  <div class="optlabel"><span>Option 5 &nbsp;·&nbsp; <b>Centered on dark navy</b></span><span class="d">Option 2 layout · Option 1 background</span></div>
+  <section class="o5"><div class="wrap">
+    <h1>Build on AI your customers can <span class="lit">trust</span></h1>
+    <p class="sub">SeekrFlow, the explainable AI operating system, is now available to startups building in critical industries via OneValley.</p>
+    <div class="cta"><a class="btn btn-white">Start Building &rarr;</a><a class="btn btn-ghostd">Talk to the team</a></div>
+    <div class="tagbar"><span>Agentic AI Infrastructure</span><i></i><span>Explainability First</span><i></i><span>Priced for Startups</span></div>
+  </div></section>
+</body>
+</html>
